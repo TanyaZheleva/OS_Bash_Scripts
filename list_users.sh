@@ -13,6 +13,8 @@ if [ "$#" -eq 1 -a "$EUID" -eq 0 ]; then
 			echo "${user}"
 		fi
 	done< <(cat "${tempfile2}")
+	rm "${tempfile1}"
+	rm "${tempfile2}"
 else
 	echo "Invalid user" 2&>1
 	exit 1
