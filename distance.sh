@@ -39,6 +39,8 @@ line=$(grep -m1 "=$callsign[ ;[(]" "${filename}")
                 line=$(grep -m1 "[ ,]${pattern}[ ;[(]" "${filename}")
 
                 echo "$line"
+		rm "${tempfile1}"
+		rm "${tempfile2}"
 	fi
 }
 
@@ -102,21 +104,13 @@ arccos(){
 }
 
 sin1=$(sin "${latitude1}")
-echo "$sin1"
 sin2=$(sin "${latitude2}")
-echo "$sin2"
 cos1=$(cos "${latitude1}")
-echo "$cos1"
 cos2=$(cos "${latitude2}")
-echo "$cos2"
 dist=$(diff "${longtitude1}" "${longtitude2}")
-echo "$dist"
 cos3=$(cos "${dist}")
-echo "$cos3"
 sum=$( echo "${sin1} * ${sin2} + ${cos1} * ${cos2} * ${cos3}" | bc -l )
-echo "$sum"
 acos=$(arccos "${sum}")
-echo "$acos"
 result=$(echo "${acos} * ${RADIUS}" | bc -l )
 integer_part=$( echo "${result}" | cut -d "." -f 1)
 decimal_part=$( echo "${result}" | cut -d "." -f 2)
