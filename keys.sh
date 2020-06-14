@@ -28,6 +28,7 @@ if [ "$#" -eq 3 -a -f "$1" ]; then
 		fi
 	done< <(cat $1)
 	cat "${tempfile}" > "$1"
+	rm "${tempfile}"
 else
 	exit 1
 fi
