@@ -12,7 +12,7 @@ if [ "$#" -eq 2 ]; then
 		fi
 
 	done< <(cat "${patterns}")
-
+	rm "${patterns}"
 else
 	echo "no" 2&>1
 	exit 1
